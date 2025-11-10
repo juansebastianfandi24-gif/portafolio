@@ -58,9 +58,9 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 mb-20">
           {/* Left: Bio */}
           <div className="space-y-6">
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+            <div className="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl rounded-2xl p-8 border border-white/20 dark:border-white/10 shadow-xl">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center text-2xl shadow-lg">
                   👨‍💻
                 </div>
                 <h3 className="text-2xl font-bold text-zinc-900 dark:text-white">
@@ -73,7 +73,7 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+            <div className="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl rounded-2xl p-8 border border-white/20 dark:border-white/10 shadow-xl">
               <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
                 Me motiva aprender constantemente, trabajar en equipo y aplicar metodologías ágiles 
                 para construir productos funcionales, escalables y bien diseñados.
@@ -100,7 +100,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/50 dark:to-purple-900/30 rounded-2xl p-6 border border-purple-200 dark:border-purple-800">
+            <div className="bg-gradient-to-br from-purple-50/60 to-purple-100/60 dark:from-purple-950/40 dark:to-purple-900/30 backdrop-blur-xl rounded-2xl p-6 border border-purple-200/50 dark:border-purple-800/50 shadow-lg">
               <div className="flex items-start gap-3">
                 <span className="text-2xl">🌱</span>
                 <div>
@@ -124,7 +124,7 @@ export default function AboutSection() {
                 { icon: "📚", label: "En aprendizaje", value: "Siempre" },
                 { icon: "🎓", label: "Estudiante", value: "Ing. Sistemas" },
               ].map((stat, idx) => (
-                <div key={idx} className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800 text-center hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
+                <div key={idx} className="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl rounded-xl p-6 border border-white/20 dark:border-white/10 text-center hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20 hover:scale-105">
                   <div className="text-4xl mb-2">{stat.icon}</div>
                   <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-1">
                     {stat.value}
@@ -136,7 +136,7 @@ export default function AboutSection() {
               ))}
             </div>
 
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+            <div className="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl rounded-2xl p-8 border border-white/20 dark:border-white/10 shadow-xl">
               <h4 className="font-bold text-lg text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
                 <span className="text-purple-600 dark:text-purple-400">💡</span>
                 Filosofía de trabajo
@@ -183,7 +183,7 @@ export default function AboutSection() {
               return (
                 <div
                   key={idx}
-                  className="group bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col items-center justify-center text-center"
+                  className="group bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl rounded-xl p-6 border border-white/20 dark:border-white/10 hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30 hover:-translate-y-2 hover:scale-105 flex flex-col items-center justify-center text-center"
                 >
                   <IconComponent className={`text-5xl mb-3 group-hover:scale-110 transition-transform duration-300 ${tech.color}`} />
                   <p className="font-medium text-zinc-900 dark:text-white text-sm">
@@ -215,7 +215,7 @@ export default function AboutSection() {
               return (
                 <div
                   key={idx}
-                  className="group bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col items-center justify-center text-center"
+                  className="group bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl rounded-xl p-6 border border-white/20 dark:border-white/10 hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30 hover:-translate-y-2 hover:scale-105 flex flex-col items-center justify-center text-center"
                 >
                   <IconComponent className={`text-5xl mb-3 group-hover:scale-110 transition-transform duration-300 ${tool.color}`} />
                   <p className="font-medium text-zinc-900 dark:text-white text-sm">

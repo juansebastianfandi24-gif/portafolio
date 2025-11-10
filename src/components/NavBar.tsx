@@ -7,7 +7,7 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+    <nav className="fixed top-0 w-full z-50 bg-white/30 dark:bg-zinc-950/30 backdrop-blur-xl border-b border-white/20 dark:border-white/10 shadow-lg shadow-purple-500/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -57,8 +57,8 @@ export default function NavBar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-zinc-950">
+        <div className="md:hidden border-t border-white/20 dark:border-white/10">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/30 dark:bg-zinc-950/30 backdrop-blur-xl">
             <Link href="#inicio" className="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950 transition-colors">
               Inicio
             </Link>

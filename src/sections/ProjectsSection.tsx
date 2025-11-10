@@ -33,10 +33,10 @@ export default function ProjectsSection() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 backdrop-blur-xl border ${
                 selectedCategory === category
-                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/50"
-                  : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
+                  ? "bg-purple-600/90 text-white shadow-xl shadow-purple-500/50 border-purple-400/50 scale-105"
+                  : "bg-zinc-800/40 text-zinc-300 hover:bg-zinc-700/60 border-white/10 hover:border-purple-500/30 hover:scale-105"
               }`}
             >
               {category === "all" ? "Todos" : category}

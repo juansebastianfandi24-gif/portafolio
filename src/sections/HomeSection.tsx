@@ -38,14 +38,14 @@ export default function HomeSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#projects"
-                className="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-medium transition-colors shadow-lg shadow-purple-500/30"
+                className="px-8 py-3 bg-purple-600/90 hover:bg-purple-700/90 backdrop-blur-xl text-white rounded-full font-medium transition-all shadow-xl shadow-purple-500/40 border border-purple-400/30 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
               >
                 Ver Proyectos
               </a>
               
               <a
                 href="#contacto"
-                className="px-8 py-3 border-2 border-purple-600 text-purple-600 dark:text-purple-400 dark:border-purple-400 rounded-full font-medium hover:bg-purple-50 dark:hover:bg-purple-950 transition-colors"
+                className="px-8 py-3 border-2 border-purple-600/80 backdrop-blur-xl text-purple-600 dark:text-purple-400 dark:border-purple-400/80 rounded-full font-medium hover:bg-purple-50/50 dark:hover:bg-purple-950/50 transition-all hover:scale-105 shadow-lg"
               >
                 Contáctame
               </a>

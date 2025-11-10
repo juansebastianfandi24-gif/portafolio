@@ -26,8 +26,8 @@ export default function ProjectCard({
   const defaultCodeImage = "https://images.pexels.com/photos/16592498/pexels-photo-16592498/free-photo-of-internet-conexion-tecnologia-ordenador.jpeg";
 
   return (
-    <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden transition-all hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20 hover:border-purple-400 dark:hover:border-purple-600">
-      <div className="relative h-48 w-full bg-gradient-to-br from-zinc-900 to-zinc-950 dark:from-zinc-950 dark:to-black overflow-hidden">
+    <div className="group relative bg-white/10 dark:bg-zinc-900/10 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 dark:border-white/10 overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl hover:shadow-purple-500/30 hover:border-purple-400/50 dark:hover:border-purple-600/50 hover:bg-white/20 dark:hover:bg-zinc-900/20">
+      <div className="relative h-48 w-full bg-gradient-to-br from-purple-900/20 to-purple-950/20 dark:from-purple-950/30 dark:to-black/30 overflow-hidden">
         <Image
           src={image || defaultCodeImage}
           alt={title}
@@ -35,11 +35,11 @@ export default function ProjectCard({
           className="object-cover opacity-90"
         />
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-900/20 to-transparent backdrop-blur-sm"></div>
         
         {category && (
           <div className="absolute top-3 right-3">
-            <span className="px-3 py-1.5 bg-purple-600 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-sm">
+            <span className="px-3 py-1.5 bg-purple-600/80 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-lg border border-white/20">
               {category}
             </span>
           </div>
@@ -59,13 +59,13 @@ export default function ProjectCard({
           {technologies.slice(0, 4).map((tech, index) => (
             <span
               key={index}
-              className="px-3 py-1 bg-purple-50 dark:bg-purple-950/50 text-purple-700 dark:text-purple-300 text-xs font-medium rounded-full border border-purple-200 dark:border-purple-800"
+              className="px-3 py-1 bg-purple-50/50 dark:bg-purple-950/30 backdrop-blur-md text-purple-700 dark:text-purple-300 text-xs font-medium rounded-full border border-purple-200/50 dark:border-purple-800/50"
             >
               {tech}
             </span>
           ))}
           {technologies.length > 4 && (
-            <span className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium rounded-full">
+            <span className="px-3 py-1 bg-zinc-100/50 dark:bg-zinc-800/30 backdrop-blur-md text-zinc-600 dark:text-zinc-400 text-xs font-medium rounded-full border border-zinc-300/50 dark:border-zinc-700/50">
               +{technologies.length - 4}
             </span>
           )}
@@ -77,7 +77,7 @@ export default function ProjectCard({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 rounded-lg transition-all font-medium text-sm group"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-zinc-900/80 dark:bg-white/90 backdrop-blur-md text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-white rounded-lg transition-all font-medium text-sm group border border-white/10 shadow-lg"
             >
               <SiGithub className="text-lg group-hover:scale-110 transition-transform" />
               <span>Código</span>
@@ -89,7 +89,7 @@ export default function ProjectCard({
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-purple-600 text-purple-600 dark:border-purple-400 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950 rounded-lg transition-all font-medium text-sm group"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-purple-600/80 backdrop-blur-md text-purple-600 dark:border-purple-400/80 dark:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-purple-950/50 rounded-lg transition-all font-medium text-sm group shadow-lg"
             >
               <HiExternalLink className="text-lg group-hover:scale-110 transition-transform" />
               <span>Demo</span>

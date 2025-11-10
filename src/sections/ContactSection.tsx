@@ -65,7 +65,7 @@ export default function ContactSection() {
                 href={method.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group ${method.bgColor} ${method.borderColor} border-2 rounded-2xl p-8 transition-all duration-300 ${method.hoverBg} ${method.hoverBorder} hover:shadow-lg hover:-translate-y-1 flex flex-col items-center text-center`}
+                className={`group bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border-2 border-white/20 dark:border-white/10 rounded-2xl p-8 transition-all duration-300 hover:bg-white/60 dark:hover:bg-zinc-900/60 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/30 hover:-translate-y-2 hover:scale-105 flex flex-col items-center text-center`}
               >
                 <div className={`${method.color} text-5xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <IconComponent />
