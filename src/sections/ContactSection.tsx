@@ -1,103 +1,116 @@
-"use client";
-
-import { useState } from "react";
+import { HiMail } from 'react-icons/hi';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { siteConfig } from '@/utils/config';
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí puedes implementar la lógica para enviar el formulario
-    console.log("Form submitted:", formData);
-    alert("¡Mensaje enviado! (Esta es una demo)");
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const contactMethods = [
+    {
+      name: 'Email',
+      icon: HiMail,
+      value: siteConfig.email,
+      href: `mailto:${siteConfig.email}`,
+      color: 'text-red-500',
+      bgColor: 'bg-red-50 dark:bg-red-950/30',
+      borderColor: 'border-red-200 dark:border-red-900',
+      hoverBg: 'hover:bg-red-100 dark:hover:bg-red-950/50',
+      hoverBorder: 'hover:border-red-500',
+    },
+    {
+      name: 'GitHub',
+      icon: SiGithub,
+      value: '@Sebastianfandi24',
+      href: siteConfig.github,
+      color: 'text-zinc-900 dark:text-white',
+      bgColor: 'bg-zinc-50 dark:bg-zinc-900/30',
+      borderColor: 'border-zinc-200 dark:border-zinc-800',
+      hoverBg: 'hover:bg-zinc-100 dark:hover:bg-zinc-900/50',
+      hoverBorder: 'hover:border-zinc-500',
+    },
+    {
+      name: 'LinkedIn',
+      icon: SiLinkedin,
+      value: 'Juan Sebastián Fandiño',
+      href: siteConfig.linkedin,
+      color: 'text-[#0A66C2]',
+      bgColor: 'bg-blue-50 dark:bg-blue-950/30',
+      borderColor: 'border-blue-200 dark:border-blue-900',
+      hoverBg: 'hover:bg-blue-100 dark:hover:bg-blue-950/50',
+      hoverBorder: 'hover:border-blue-500',
+    },
+  ];
 
   return (
-    <section id="contacto" className="min-h-screen flex items-center justify-center px-4 py-20">
-      <div className="max-w-2xl mx-auto w-full">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-zinc-900 dark:text-white">
-          Contáctame
-        </h2>
-        
-        <p className="text-center text-zinc-600 dark:text-zinc-400 mb-12">
-          ¿Tienes un proyecto en mente? ¡Hablemos!
-        </p>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-zinc-900 dark:text-white mb-2"
-            >
-              Nombre
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white"
-            />
+    <section id="contacto" className="min-h-screen flex items-center justify-center px-4 py-20 bg-zinc-50 dark:bg-zinc-950">
+      <div className="max-w-4xl mx-auto w-full">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-purple-600 dark:text-purple-400 font-medium mb-2 text-sm tracking-wider uppercase">
+            Hablemos
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-4">
+            Contáctame
+          </h2>
+          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+            ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme a través de cualquiera de estos canales
+          </p>
+        </div>
+
+        {/* Contact Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {contactMethods.map((method, idx) => {
+            const IconComponent = method.icon;
+            return (
+              <a
+                key={idx}
+                href={method.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group ${method.bgColor} ${method.borderColor} border-2 rounded-2xl p-8 transition-all duration-300 ${method.hoverBg} ${method.hoverBorder} hover:shadow-lg hover:-translate-y-1 flex flex-col items-center text-center`}
+              >
+                <div className={`${method.color} text-5xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <IconComponent />
+                </div>
+                <h3 className="font-bold text-xl text-zinc-900 dark:text-white mb-2">
+                  {method.name}
+                </h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 break-all">
+                  {method.value}
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-purple-600 dark:text-purple-400 font-medium text-sm">
+                  <span>Contactar</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Additional Info */}
+        <div className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-800 text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="text-3xl">💼</span>
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white">
+              ¿Buscas un desarrollador?
+            </h3>
           </div>
-          
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-zinc-900 dark:text-white mb-2"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white"
-            />
+          <p className="text-zinc-600 dark:text-zinc-400 mb-6 max-w-2xl mx-auto">
+            Estoy disponible para colaborar en proyectos interesantes. Si tienes una idea o necesitas ayuda con desarrollo backend, frontend o integración de APIs, ¡escríbeme!
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <span className="px-4 py-2 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
+              Backend
+            </span>
+            <span className="px-4 py-2 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
+              Frontend
+            </span>
+            <span className="px-4 py-2 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
+              APIs REST
+            </span>
+            <span className="px-4 py-2 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
+              Bases de Datos
+            </span>
           </div>
-          
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-zinc-900 dark:text-white mb-2"
-            >
-              Mensaje
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={5}
-              className="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white"
-            />
-          </div>
-          
-          <button
-            type="submit"
-            className="w-full px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg font-medium hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
-          >
-            Enviar Mensaje
-          </button>
-        </form>
+        </div>
       </div>
     </section>
   );

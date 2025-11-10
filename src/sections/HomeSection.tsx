@@ -37,7 +37,7 @@ export default function HomeSection() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
-                href="#proyectos"
+                href="#projects"
                 className="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-medium transition-colors shadow-lg shadow-purple-500/30"
               >
                 Ver Proyectos

@@ -11,51 +11,42 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Gestión de Notas Académicas",
-    description: "Sistema completo en Java + MySQL para administrar estudiantes, cursos y actividades académicas. Incluye vistas, lógica de negocio robusta y manejo eficiente de datos.",
-    image: "/images/project-placeholder.svg",
+    description: "Sistema completo en Java + MySQL para administrar estudiantes, cursos y actividades académicas. Incluye vistas, lógica de negocio robusta y manejo eficiente de datos con arquitectura MVC.",
+    image: "https://images.pexels.com/photos/16592498/pexels-photo-16592498/free-photo-of-internet-conexion-tecnologia-ordenador.jpeg",
     technologies: ["Java", "MySQL", "JDBC", "MVC"],
-    githubUrl: "https://github.com/Sebastianfandi24",
+    githubUrl: "https://github.com/Sebastianfandi24/Ges_de_Notas",
     category: "Backend & Database"
   },
   {
-    title: "API REST - Integración de Datos",
-    description: "Desarrollo de API RESTful con arquitectura en capas, endpoints bien definidos y pruebas completas de backend/frontend. Diseñada para escalabilidad y mantenibilidad.",
-    image: "/images/project-placeholder.svg",
-    technologies: ["Python", "PostgreSQL", "API", "REST"],
-    githubUrl: "https://github.com/Sebastianfandi24",
+    title: "API Conexión - Clase",
+    description: "Desarrollo de API RESTful con arquitectura en capas para gestión de conexiones. Implementa endpoints bien definidos con pruebas completas y documentación clara.",
+    image: "https://images.pexels.com/photos/16592498/pexels-photo-16592498/free-photo-of-internet-conexion-tecnologia-ordenador.jpeg",
+    technologies: ["Python", "API", "REST", "Backend"],
+    githubUrl: "https://github.com/Sebastianfandi24/ApIConexionClase",
     category: "API & Backend"
   },
   {
-    title: "The Cyber Instructor - Bootcamp",
-    description: "Aplicación completa desarrollada como proyecto final de bootcamp. Incluye levantamiento de requerimientos, casos de uso, pruebas exhaustivas y despliegue siguiendo metodologías ágiles.",
-    image: "/images/project-placeholder.svg",
-    technologies: ["Python", "HTML", "CSS", "PostgreSQL", "Agile"],
-    githubUrl: "https://github.com/Sebastianfandi24",
-    category: "Full Stack"
+    title: "Parcial 2 - Base de Datos",
+    description: "Proyecto académico de bases de datos con modelado avanzado, consultas complejas, procedimientos almacenados y optimización de queries. Implementación de buenas prácticas en diseño de BD.",
+    image: "https://images.pexels.com/photos/16592498/pexels-photo-16592498/free-photo-of-internet-conexion-tecnologia-ordenador.jpeg",
+    technologies: ["SQL", "PostgreSQL", "Database Design", "Optimization"],
+    githubUrl: "https://github.com/Sebastianfandi24/Parcial2BD",
+    category: "Backend & Database"
   },
-  // Proyectos adicionales - se irán agregando
   {
-    title: "Sistema ETL y Análisis de Datos",
-    description: "Herramienta para extracción, transformación y carga de datos con análisis avanzado. Automatiza procesos de migración y limpieza de información.",
-    image: "/images/project-placeholder.svg",
-    technologies: ["Python", "Pandas", "SQL", "ETL"],
-    githubUrl: "https://github.com/Sebastianfandi24",
+    title: "ETL Fast",
+    description: "Herramienta optimizada para extracción, transformación y carga de datos. Automatiza procesos de migración, limpieza y análisis de información con alto rendimiento.",
+    image: "https://images.pexels.com/photos/16592498/pexels-photo-16592498/free-photo-of-internet-conexion-tecnologia-ordenador.jpeg",
+    technologies: ["Python", "Pandas", "ETL", "Data Processing"],
+    githubUrl: "https://github.com/Sebastianfandi24/ETLFast",
     category: "Data Engineering"
   },
   {
-    title: "Proyecto Web Moderno",
-    description: "Aplicación web responsive con diseño moderno y funcionalidades avanzadas. Integración con bases de datos y API REST.",
-    image: "/images/project-placeholder.svg",
-    technologies: ["React", "PostgreSQL", "Tailwind", "API"],
-    githubUrl: "https://github.com/Sebastianfandi24",
+    title: "The Cyber Instructor - Bootcamp",
+    description: "Aplicación completa desarrollada como proyecto final de bootcamp. Incluye levantamiento de requerimientos, casos de uso, arquitectura completa, pruebas exhaustivas y despliegue siguiendo metodologías ágiles.",
+    image: "https://images.pexels.com/photos/16592498/pexels-photo-16592498/free-photo-of-internet-conexion-tecnologia-ordenador.jpeg",
+    technologies: ["Python", "HTML", "CSS", "PostgreSQL", "Agile"],
+    githubUrl: "https://github.com/Sebastianfandi24/TRABAJO-FINAL-BOOTCAMP",
     category: "Full Stack"
-  },
-  {
-    title: "Herramientas de Ciberseguridad",
-    description: "Proyecto educativo enfocado en pentesting básico y seguridad en redes. Desarrollo de scripts y herramientas para auditoría de seguridad.",
-    image: "/images/project-placeholder.svg",
-    technologies: ["Python", "Networking", "Security", "Linux"],
-    githubUrl: "https://github.com/Sebastianfandi24",
-    category: "Cybersecurity"
   },
 ];
