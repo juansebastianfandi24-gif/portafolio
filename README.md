@@ -1,4 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portafolio Personal
+
+Portafolio profesional construido con Next.js 16, TypeScript y Tailwind CSS.
+
+## 🚀 Características
+
+- ⚡ Next.js 16 con App Router
+- 🎨 Tailwind CSS para estilos
+- 🌗 Modo oscuro integrado
+- 📱 Diseño completamente responsive
+- ⚙️ TypeScript para type safety
+- 🎯 Optimizado para SEO
+- 🚀 Listo para desplegar en Vercel
+
+## 📁 Estructura del Proyecto
+
+```
+/portafolio/
+│
+├── /app/                  ← App Router de Next.js
+│   ├── layout.tsx         ← Layout principal
+│   └── page.tsx           ← Página de inicio
+│
+├── /src/                  ← Código fuente principal
+│   ├── /components/       ← Componentes reutilizables
+│   │   ├── NavBar.tsx
+│   │   ├── Footer.tsx
+│   │   └── ProjectCard.tsx
+│   │
+│   ├── /sections/         ← Secciones de la página
+│   │   ├── HomeSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── ProjectsSection.tsx
+│   │   └── ContactSection.tsx
+│   │
+│   ├── /data/             ← Datos estáticos
+│   │   └── projectsData.ts
+│   │
+│   ├── /styles/           ← Estilos
+│   │   ├── globals.css
+│   │   └── theme.css
+│   │
+│   ├── /utils/            ← Funciones auxiliares
+│   │   └── api.ts
+│   │
+│   └── /assets/           ← Recursos (imágenes, fuentes, iconos)
+│       ├── /images/
+│       ├── /fonts/
+│       └── /icons/
+│
+├── /public/               ← Archivos estáticos
+│   └── /images/           ← Imágenes públicas
+│
+└── /backend/              ← (Opcional) Backend con Node.js/Express
+```
 
 ## Getting Started
 
@@ -16,21 +70,29 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Personalización
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Información Personal
 
-## Learn More
+Edita los siguientes archivos para personalizar tu portafolio:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Datos de proyectos**: `src/data/projectsData.ts`
+2. **Sección de inicio**: `src/sections/HomeSection.tsx`
+3. **Sección sobre mí**: `src/sections/AboutSection.tsx`
+4. **Metadata SEO**: `app/layout.tsx`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Estilos y Tema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Colores y variables**: `src/styles/theme.css`
+- **Estilos globales**: `src/styles/globals.css`
+
+## 🌐 API de GitHub
+
+El archivo `src/utils/api.ts` incluye funciones para obtener información de tu perfil y repositorios de GitHub.
 
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+

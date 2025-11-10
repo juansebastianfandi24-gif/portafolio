@@ -1,0 +1,80 @@
+/* Variables de tema - Monocromático con toques morados */
+
+:root {
+  /* Colores principales - Morado */
+  --color-primary: #9333ea;        /* Purple-600 */
+  --color-secondary: #a855f7;      /* Purple-500 */
+  --color-accent: #c084fc;         /* Purple-400 */
+  
+  /* Colores de texto - Escala de grises */
+  --text-primary: #18181b;         /* Zinc-900 */
+  --text-secondary: #52525b;       /* Zinc-600 */
+  --text-tertiary: #a1a1aa;        /* Zinc-400 */
+  
+  /* Colores de fondo - Escala de grises */
+  --bg-primary: #ffffff;           /* White */
+  --bg-secondary: #fafafa;         /* Zinc-50 */
+  --bg-tertiary: #f4f4f5;          /* Zinc-100 */
+  
+  /* Morado suave para fondos */
+  --bg-purple-light: #faf5ff;      /* Purple-50 */
+  --bg-purple: #f3e8ff;            /* Purple-100 */
+  
+  /* Tipografía */
+  --font-heading: var(--font-geist-sans);
+  --font-body: var(--font-geist-sans);
+  --font-code: var(--font-geist-mono);
+  
+  /* Tamaños de fuente */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  
+  /* Espaciado */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Sombras - con toque morado */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-purple: 0 10px 25px -5px rgb(147 51 234 / 0.2);
+  
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Colores de texto en modo oscuro */
+    --text-primary: #fafafa;         /* Zinc-50 */
+    --text-secondary: #a1a1aa;       /* Zinc-400 */
+    --text-tertiary: #71717a;        /* Zinc-500 */
+    
+    /* Colores de fondo en modo oscuro - más oscuros para minimalismo */
+    --bg-primary: #09090b;           /* Zinc-950 */
+    --bg-secondary: #18181b;         /* Zinc-900 */
+    --bg-tertiary: #27272a;          /* Zinc-800 */
+    
+    /* Morado oscuro para fondos */
+    --bg-purple-light: #1a0a2e;      /* Morado muy oscuro */
+    --bg-purple: #2d1b4e;            /* Morado oscuro */
+    
+    /* Ajustar colores principales para mejor contraste */
+    --color-primary: #a855f7;        /* Purple-500 */
+    --color-secondary: #c084fc;      /* Purple-400 */
+    --color-accent: #d8b4fe;         /* Purple-300 */
+  }
+}
