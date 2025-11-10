@@ -1,94 +1,158 @@
 "use client";
 
-import { useState } from "react";
-import ProjectCard from "@/src/components/ProjectCard";
-import { projects } from "@/src/data/projectsData";
+import { useState, useEffect } from "react";
+import ProjectCard from "@/components/ProjectCard";
+import { Project, projects } from "@/data/projectsData";
+import { getGitHubRepos } from "@/utils/api";
+import { siteConfig } from "@/utils/config";
 
 export default function ProjectsSection() {
-  const [filter, setFilter] = useState<string | null>(null);
-  
-  // Obtener todas las categorías únicas
-  const categories = Array.from(
-    new Set(projects.map(p => p.category).filter((c): c is string => c !== undefined))
-  );
-  
-  // Filtrar proyectos según categoría seleccionada
-  const filteredProjects = filter
-    ? projects.filter(p => p.category === filter)
-    : projects;
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [allProjects, setAllProjects] = useState<Project[]>(projects);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchGitHubProjects() {
+      setIsLoading(true);
+      try {
+        const githubRepos = await getGitHubRepos(siteConfig.github.split('/').pop() || "");
+        
+        // Mapear repos de GitHub a nuestro formato Project
+        const mappedRepos: Project[] = githubRepos.map((repo: any) => ({
+          title: repo.title,
+          description: repo.description,
+          image: repo.image,
+          technologies: repo.language ? [repo.language, ...repo.technologies] : repo.technologies,
+          githubUrl: repo.githubUrl,
+          liveUrl: repo.liveUrl,
+          category: categorizarProyecto(repo.language, repo.technologies),
+        }));
+
+        // Combinar proyectos destacados con repos de GitHub (sin duplicados)
+        const githubUrls = projects.map((p: Project) => p.githubUrl);
+        const uniqueGithubRepos = mappedRepos.filter(
+          repo => !githubUrls.includes(repo.githubUrl)
+        );
+
+        setAllProjects([...projects, ...uniqueGithubRepos]);
+      } catch (error) {
+        console.error("Error al cargar proyectos de GitHub:", error);
+        setAllProjects(projects); // Fallback a proyectos estáticos
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchGitHubProjects();
+  }, []);
+
+  // Función para categorizar automáticamente proyectos
+  function categorizarProyecto(language: string, technologies: string[]): string {
+    const lowerLang = language?.toLowerCase() || "";
+    const lowerTech = technologies.join(" ").toLowerCase();
+
+    if (lowerTech.includes("react") || lowerTech.includes("next") || lowerTech.includes("vue")) {
+      return "Full Stack";
+    }
+    if (lowerTech.includes("api") || lowerLang === "python" || lowerLang === "java") {
+      return "API & Backend";
+    }
+    if (lowerTech.includes("data") || lowerTech.includes("analytics")) {
+      return "Data Engineering";
+    }
+    if (lowerTech.includes("security") || lowerTech.includes("cyber")) {
+      return "Cybersecurity";
+    }
+    if (lowerTech.includes("database") || lowerTech.includes("sql")) {
+      return "Backend & Database";
+    }
+    return "Full Stack"; // Categoría por defecto
+  }
+
+  // Obtener categorías únicas de todos los proyectos
+  const categories = ["all", ...new Set(allProjects.map(p => p.category).filter(Boolean))] as string[];
+
+  // Filtrar proyectos según la categoría seleccionada
+  const filteredProjects = selectedCategory === "all" 
+    ? allProjects 
+    : allProjects.filter(project => project.category === selectedCategory);
 
   return (
-    <section id="proyectos" className="min-h-screen py-20 px-4 bg-white dark:bg-zinc-950">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-900 dark:text-white">
-            🚀 Mis Proyectos
-          </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-            Proyectos destacados en desarrollo de software, desde APIs REST hasta aplicaciones completas Full Stack
-          </p>
-        </div>
-        
-        {/* Filtros por categoría */}
+    <section id="projects" className="min-h-screen py-20 bg-zinc-900">
+      <div className="container mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center mb-4 text-white">
+          Mis Proyectos
+        </h2>
+        <p className="text-center text-zinc-400 mb-12 max-w-2xl mx-auto">
+          Una colección de proyectos que demuestran mis habilidades en desarrollo web,
+          backend y análisis de datos. Proyectos obtenidos dinámicamente desde GitHub.
+        </p>
+
+        {/* Filtros de categoría */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <button
-            onClick={() => setFilter(null)}
-            className={`px-6 py-2 rounded-full font-medium transition-all ${
-              filter === null
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30"
-                : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-purple-100 dark:hover:bg-purple-950 hover:text-purple-600 dark:hover:text-purple-400"
-            }`}
-          >
-            Todos ({projects.length})
-          </button>
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all ${
-                filter === category
-                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30"
-                  : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-purple-100 dark:hover:bg-purple-950 hover:text-purple-600 dark:hover:text-purple-400"
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-purple-600 text-white shadow-lg shadow-purple-500/50"
+                  : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
               }`}
             >
-              {category} ({projects.filter(p => p.category === category).length})
+              {category === "all" ? "Todos" : category}
+              <span className="ml-2 text-sm opacity-75">
+                ({category === "all" 
+                  ? allProjects.length 
+                  : allProjects.filter(p => p.category === category).length})
+              </span>
             </button>
           ))}
         </div>
-        
-        {/* Grid de proyectos */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
-          ))}
-        </div>
-        
-        {/* Mensaje si no hay proyectos filtrados */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-zinc-600 dark:text-zinc-400 text-lg">
-              No hay proyectos en esta categoría
-            </p>
+
+        {/* Loading state */}
+        {isLoading ? (
+          <div className="text-center py-20">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-purple-600 border-t-transparent"></div>
+            <p className="mt-4 text-zinc-400">Cargando proyectos desde GitHub...</p>
           </div>
+        ) : (
+          <>
+            {/* Grid de proyectos */}
+            {filteredProjects.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProjects.map((project, index) => (
+                  <ProjectCard key={index} {...project} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-20">
+                <p className="text-zinc-400 text-lg">
+                  No hay proyectos en esta categoría
+                </p>
+              </div>
+            )}
+
+            {/* Stats */}
+            <div className="mt-16 text-center">
+              <p className="text-zinc-500 text-sm">
+                Mostrando {filteredProjects.length} de {allProjects.length} proyectos totales
+              </p>
+              <p className="text-zinc-600 text-sm mt-2">
+                Visita mi{" "}
+                <a 
+                  href={siteConfig.github}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-purple-500 hover:text-purple-400 underline"
+                >
+                  GitHub
+                </a>
+                {" "}para ver más de mi trabajo
+              </p>
+            </div>
+          </>
         )}
-        
-        {/* Nota sobre proyectos */}
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-purple-50 dark:bg-purple-950 border border-purple-200 dark:border-purple-800 rounded-lg p-6 max-w-2xl">
-            <p className="text-purple-900 dark:text-purple-200">
-              💡 <strong>Proyectos en constante actualización.</strong> Visita mi{" "}
-              <a 
-                href="https://github.com/Sebastianfandi24" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="underline hover:text-purple-600 dark:hover:text-purple-400"
-              >
-                GitHub
-              </a>
-              {" "}para ver más de mi trabajo y contribuciones.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );

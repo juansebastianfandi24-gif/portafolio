@@ -1,4 +1,4 @@
-import { siteConfig } from "@/src/utils/config";
+import { siteConfig } from "@/utils/config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
